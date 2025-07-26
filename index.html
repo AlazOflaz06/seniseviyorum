@@ -4,14 +4,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nisa'ya Özel Teklif</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');{ box-sizing: border-box; }
-
-
-body, html { margin: 0; padding: 0; height: 100%; background: #cc0000; font-family: 'Roboto', sans-serif; color: #fff; display: flex; justify-content: center; align-items: center; text-align: center; }
+  * { box-sizing: border-box; }body, html { margin: 0; padding: 0; height: 100%; background: #cc0000; font-family: sans-serif; color: #fff; display: flex; justify-content: center; align-items: center; text-align: center; }
 
 .container { background: rgba(0,0,0,0.6); padding: 30px 20px; border-radius: 30px; max-width: 90vw; width: 400px; box-shadow: 0 0 40px #ff4d6d; position: relative; }
 
-h1 { font-family: 'Great Vibes', cursive; font-size: 2.5rem; margin-bottom: 20px; }
+h1 { font-size: 2.5rem; margin-bottom: 20px; }
 
 p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; }
 
@@ -26,11 +23,8 @@ p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; }
 .hidden { display: none; } </style>
 
 </head>
-<body><div class="container" id="girisEkrani">
-  <h1>Berke'den Nisa'ya</h1>
-  <button class="btn" onclick="showTeklif()">Nisa'ya Teklif</button>
-</div><div class="container hidden" id="teklifEkrani">
-  <h1>Benimle çıkar mısın, yavrum?</h1>
+<body><div class="container" id="teklifEkrani">
+  <h1>Benimle çıkar mısın?</h1>
   <div class="btns">
     <button class="btn" onclick="showTesekkur()">💖 Evet</button>
     <button class="btn" id="noBtn">😢 Hayır</button>
@@ -39,34 +33,36 @@ p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; }
   <h1>Teşekkür ederim prensesim 💖</h1>
   <p>27 Temmuz 2025 saat 00.00'dan itibaren geçen süre:</p>
   <div id="timer">00 yıl 00 ay 00 gün 00:00:00</div>
-  <p style="margin-top: 20px; font-weight: bold;">Buda bizim sevgili olduğumuzdan beri geçen zaman...</p>
+  <p style="margin-top: 20px; font-weight: bold;">Bu da bizim sevgili olduğumuzdan beri geçen zaman...</p>
 </div><script>
-  function showTeklif() {
-    document.getElementById("girisEkrani").classList.add("hidden");
-    document.getElementById("teklifEkrani").classList.remove("hidden");
-  }
+  const teklifEkrani = document.getElementById('teklifEkrani');
+  const tesekkurEkrani = document.getElementById('tesekkurEkrani');
+  const noBtn = document.getElementById('noBtn');
+  const timerEl = document.getElementById('timer');
 
   function showTesekkur() {
-    document.getElementById("teklifEkrani").classList.add("hidden");
-    document.getElementById("tesekkurEkrani").classList.remove("hidden");
+    teklifEkrani.classList.add('hidden');
+    tesekkurEkrani.classList.remove('hidden');
   }
 
   // Hayır butonu kaçma efekti
-  const noBtn = document.getElementById("noBtn");
-  noBtn.addEventListener("mouseenter", () => {
-    const container = document.getElementById("teklifEkrani");
-    const rect = container.getBoundingClientRect();
-    const maxX = rect.width - noBtn.offsetWidth;
-    const maxY = rect.height - noBtn.offsetHeight;
+  noBtn.addEventListener('mouseenter', () => {
+    const container = teklifEkrani.getBoundingClientRect();
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = container.width - btnWidth;
+    const maxY = container.height - btnHeight;
+
     const randomX = Math.floor(Math.random() * maxX);
     const randomY = Math.floor(Math.random() * maxY);
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
   });
 
   // Sayaç – 27 Temmuz 2025 00:00
   const startDate = new Date("2025-07-27T00:00:00Z").getTime();
-  const timerEl = document.getElementById("timer");
 
   function updateTimer() {
     const now = Date.now();
