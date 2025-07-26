@@ -1,243 +1,93 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!DOCTYPE html><html lang="tr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yavrum, Benimle Çıkar Mısın?</title>
+<title>Nisa'ya Özel Teklif</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');{ box-sizing: border-box; }
 
-  * {
-    box-sizing: border-box;
-  }
 
-  body, html {
-    margin: 0; padding: 0;
-    height: 100%;
-    background: #cc0000;
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-  }
+body, html { margin: 0; padding: 0; height: 100%; background: #cc0000; font-family: 'Roboto', sans-serif; color: #fff; display: flex; justify-content: center; align-items: center; text-align: center; }
 
-  .container {
-    background: rgba(0,0,0,0.6);
-    padding: 30px 20px;
-    border-radius: 30px;
-    max-width: 90vw;
-    width: 400px;
-    box-shadow: 0 0 40px #ff4d6d;
-    position: relative;
-  }
+.container { background: rgba(0,0,0,0.6); padding: 30px 20px; border-radius: 30px; max-width: 90vw; width: 400px; box-shadow: 0 0 40px #ff4d6d; position: relative; }
 
-  h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    text-shadow: 0 0 12px #ff6699;
-  }
+h1 { font-family: 'Great Vibes', cursive; font-size: 2.5rem; margin-bottom: 20px; }
 
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 40px;
-    min-height: 120px;
-  }
+p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; }
 
-  #timer {
-    font-family: monospace;
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #ffb6c1;
-    text-shadow: 0 0 10px #ff3366;
-  }
+#timer { font-family: monospace; font-size: 1.4rem; font-weight: 700; margin-top: 30px; color: #ffb6c1; }
 
-  .btns {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    position: relative;
-    height: 50px;
-  }
+.btn { background: linear-gradient(45deg, #ff4d6d, #ff8a65); border: none; border-radius: 50px; padding: 15px 40px; font-size: 1.2rem; font-weight: bold; color: white; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.3s ease, background 0.3s ease; user-select: none; }
 
-  button {
-    background: linear-gradient(45deg, #ff4d6d, #ff8a65);
-    border: none;
-    border-radius: 50px;
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, background 0.3s ease;
-    position: relative;
-    user-select: none;
-  }
+.btn:hover { background: linear-gradient(45deg, #ff6f91, #ff9472); transform: scale(1.05); }
 
-  button:hover {
-    background: linear-gradient(45deg, #ff6f91, #ff9472);
-    transform: scale(1.05);
-  }
+#noBtn { position: absolute; }
 
-  #noBtn {
-    position: absolute;
-  }
+.hidden { display: none; } </style>
 
-  .hidden {
-    display: none;
-  }
-
-  @media (max-width: 480px) {
-    .container {
-      width: 95vw;
-      padding: 25px 15px;
-    }
-    h1 {
-      font-size: 2.2rem;
-    }
-    p {
-      font-size: 1rem;
-      min-height: auto;
-      margin-bottom: 30px;
-    }
-    button {
-      padding: 12px 30px;
-      font-size: 1rem;
-    }
-  }
-</style>
 </head>
-<body>
-
-<div class="container" id="offerContainer">
-  <h1>Yavrum, Benimle Çıkar Mısın?</h1>
-  <p id="offerMsg">
-    İki yıl boyunca uzak kaldık, ama kalplerimiz hiç ayrılmadı.<br>
-    Şimdi zaman, bizim hikayemizin en güzel sayfasını açmak için hazır.<br>
-    Seninle Ankara’da el ele, birlikte olacağımız o gün için sabırsızlanıyorum.<br><br>
-    Bu yolculukta her saniye seni düşündüm, her an kalbim seninle attı.<br>
-    Şimdi, tek bir kelimeyle başla bu yeni hikayeye...
-  </p>
-
-  <div id="timer">00 yıl 00 ay 00 gün 00:00:00</div>
-
+<body><div class="container" id="girisEkrani">
+  <h1>Berke'den Nisa'ya</h1>
+  <button class="btn" onclick="showTeklif()">Nisa'ya Teklif</button>
+</div><div class="container hidden" id="teklifEkrani">
+  <h1>Benimle çıkar mısın, yavrum?</h1>
   <div class="btns">
-    <button id="yesBtn">💖 Evet, kalbim sende</button>
-    <button id="noBtn">😢 Hayır</button>
+    <button class="btn" onclick="showTesekkur()">💖 Evet</button>
+    <button class="btn" id="noBtn">😢 Hayır</button>
   </div>
-</div>
+</div><div class="container hidden" id="tesekkurEkrani">
+  <h1>Teşekkür ederim prensesim 💖</h1>
+  <p>27 Temmuz 2025 saat 00.00'dan itibaren geçen süre:</p>
+  <div id="timer">00 yıl 00 ay 00 gün 00:00:00</div>
+  <p style="margin-top: 20px; font-weight: bold;">Buda bizim sevgili olduğumuzdan beri geçen zaman...</p>
+</div><script>
+  function showTeklif() {
+    document.getElementById("girisEkrani").classList.add("hidden");
+    document.getElementById("teklifEkrani").classList.remove("hidden");
+  }
 
-<div class="container hidden" id="thankYouContainer" style="display:none;">
-  <h1>Teşekkürler, Yavrum! ❤️</h1>
-  <p>Sevgili olduğumuzdan beri geçen süre:</p>
-  <div id="loveTimer" style="font-family: monospace; font-size: 1.6rem; font-weight: 700; color: #ffb6c1; text-shadow: 0 0 10px #ff3366;"></div>
-</div>
+  function showTesekkur() {
+    document.getElementById("teklifEkrani").classList.add("hidden");
+    document.getElementById("tesekkurEkrani").classList.remove("hidden");
+  }
 
-<script>
-  const offerContainer = document.getElementById('offerContainer');
-  const thankYouContainer = document.getElementById('thankYouContainer');
-  const yesBtn = document.getElementById('yesBtn');
-  const noBtn = document.getElementById('noBtn');
-  const timer = document.getElementById('timer');
-  const loveTimer = document.getElementById('loveTimer');
+  // Hayır butonu kaçma efekti
+  const noBtn = document.getElementById("noBtn");
+  noBtn.addEventListener("mouseenter", () => {
+    const container = document.getElementById("teklifEkrani");
+    const rect = container.getBoundingClientRect();
+    const maxX = rect.width - noBtn.offsetWidth;
+    const maxY = rect.height - noBtn.offsetHeight;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+  });
 
-  // Sayaç başlangıç tarihi: 27 Temmuz 2023 00:00:00 (UTC)
-  const startDate = new Date("2023-07-27T00:00:00Z").getTime();
+  // Sayaç – 27 Temmuz 2025 00:00
+  const startDate = new Date("2025-07-27T00:00:00Z").getTime();
+  const timerEl = document.getElementById("timer");
 
-  // Genel geçen süre sayaçı (teklif öncesi)
   function updateTimer() {
     const now = Date.now();
     let diff = now - startDate;
 
     if (diff < 0) {
-      timer.innerText = "Henüz başlamadı...";
+      timerEl.innerText = "Henüz başlamadı...";
       return;
     }
 
-    const ms = diff % 1000;
-    diff = Math.floor(diff / 1000);
-    const seconds = diff % 60;
-    diff = Math.floor(diff / 60);
-    const minutes = diff % 60;
-    diff = Math.floor(diff / 60);
-    const hours = diff % 24;
-    diff = Math.floor(diff / 24);
-    const days = diff % 30;
-    diff = Math.floor(diff / 30);
-    const months = diff % 12;
-    const years = Math.floor(diff / 12);
+    const seconds = Math.floor(diff / 1000) % 60;
+    const minutes = Math.floor(diff / (1000 * 60)) % 60;
+    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
+    const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30)) % 12;
+    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
 
-    function pad(n) {
-      return n.toString().padStart(2, '0');
-    }
-
-    timer.innerText = `${pad(years)} yıl ${pad(months)} ay ${pad(days)} gün ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    const pad = (n) => n.toString().padStart(2, '0');
+    timerEl.innerText = `${pad(years)} yıl ${pad(months)} ay ${pad(days)} gün ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
   }
 
-  setInterval(updateTimer, 500);
-  updateTimer();
-
-  // Hayır butonu kaçma davranışı
-  noBtn.addEventListener('mouseenter', () => {
-    const containerRect = offerContainer.getBoundingClientRect();
-    const btnWidth = noBtn.offsetWidth;
-    const btnHeight = noBtn.offsetHeight;
-
-    // Yeni rastgele pozisyon (container içinde)
-    const maxX = containerRect.width - btnWidth;
-    const maxY = containerRect.height - btnHeight;
-
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
-  });
-
-  // Evet butonuna basınca teşekkür ve sevgili süresi göster
-  yesBtn.addEventListener('click', () => {
-    offerContainer.style.display = 'none';
-    thankYouContainer.style.display = 'block';
-
-    function updateLoveTimer() {
-      const now = Date.now();
-      let diff = now - startDate;
-
-      if (diff < 0) {
-        loveTimer.innerText = "Henüz başlamadı...";
-        return;
-      }
-
-      const ms = diff % 1000;
-      diff = Math.floor(diff / 1000);
-      const seconds = diff % 60;
-      diff = Math.floor(diff / 60);
-      const minutes = diff % 60;
-      diff = Math.floor(diff / 60);
-      const hours = diff % 24;
-      diff = Math.floor(diff / 24);
-      const days = diff % 30;
-      diff = Math.floor(diff / 30);
-      const months = diff % 12;
-      const years = Math.floor(diff / 12);
-
-      function pad(n) {
-        return n.toString().padStart(2, '0');
-      }
-
-      loveTimer.innerText = `${pad(years)} yıl ${pad(months)} ay ${pad(days)} gün ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-    }
-
-    setInterval(updateLoveTimer, 500);
-    updateLoveTimer();
-  });
-</script>
-
-</body>
+  setInterval(updateTimer, 1000);
+</script></body>
 </html>
