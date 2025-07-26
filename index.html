@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nisa'ya Özel</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+      color: white;
+      overflow-x: hidden;
+      background-image: url('https://i.imgur.com/Jt6tUoX.gif');
+      background-size: cover;
+      background-position: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.4);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2em;
+      line-height: 1.6em;
+    }
+    button {
+      padding: 12px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+    .yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+    .yes:hover {
+      background-color: #ff1c45;
+    }
+    .no {
+      background-color: #cccccc;
+      color: #222;
+      position: relative;
+    }
+    .hidden {
+      display: none;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body><audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9a61dc21be.mp3?filename=romantic-piano-loop-112191.mp3" type="audio/mp3">
+</audio><div class="container" id="step1">
+  <h1>Nisa...</h1>
+  <p>Şu an ellerim klavyede olabilir... Ama kalbim senin ellerinde.</p>
+  <button class="yes" onclick="nextStep(2)">💌 Devam Et</button>
+</div><div class="container hidden" id="step2">
+  <p>Şu an farklı şehirlerdeyiz... Ama içimde sana uzanan bir yol var, yavrum.</p>
+  <p>Ve biliyorum, iki yıl sonra Ankara'da sana sarılacağım.</p>
+  <button class="yes" onclick="nextStep(3)">🌌 Devam Et</button>
+</div><div class="container hidden" id="step3">
+  <p>Yavrum... Gülüşün içimdeki tüm sessizlikleri konuşturdu. Seni düşündükçe içim ısınıyor.</p>
+  <p>Ve bugün... Sana sormak istediğim bir şey var.</p>
+  <button class="yes" onclick="nextStep(4)">❤️ Devam Et</button>
+</div><div class="container hidden" id="step4">
+  <h1>Yavrum, benimle çıkar mısın?</h1>
+  <button class="yes" onclick="nextStep(5)">❤️ Evet, kalbin bende zaten</button>
+  <button class="no" id="noBtn">😢 Hayır</button>
+</div><div class="container hidden" id="step5">
+  <h1>İşte bu cevabı bekliyordum...</h1>
+  <p>Seni seviyorum yavrum. Bu kalp artık sonsuza kadar senin.</p>
+  <h2>💞 Hayalimiz: Ankara'da birlikte</h2>
+  <ul style="text-align:left">
+    <li>El ele Tunalı'da yürümek</li>
+    <li>Kocatepe'de gün batımını izlemek</li>
+    <li>Kızılay'da gece çayı içmek</li>
+    <li>Film izlerken yanında uyuyakalmak</li>
+    <li>"Hatırlıyor musun o sanal teklifi?" demek</li>
+  </ul>
+  <h3>🤗 Sanal Sarılma</h3>
+  <p>Gözlerini kapat yavrum... Şu an sana sarılıyorum. Kalbimden geçen sıcaklık ekranına ulaşsın...</p>
+  <h3>✉️ Kalbimden Gelen</h3>
+  <p>Bu bir teklif değil sadece. Bu, sana uzanan bir ömürlük yolun ilk adımı... Seni seviyorum, yavrum.</p>
+</div><script>
+  let currentStep = 1;
+
+  function nextStep(step) {
+    document.getElementById("step" + currentStep).classList.add("hidden");
+    document.getElementById("step" + step).classList.remove("hidden");
+    currentStep = step;
+  }
+
+  const noBtn = document.getElementById("noBtn");
+  let counter = 0;
+
+  noBtn.addEventListener("mouseover", () => {
+    const messages = [
+      "Yavrum, bunu demek istememişsindir...",
+      "Lütfen bir daha düşün... 😢",
+      "Kalbim kırılır...",
+      "Bu cevabı kabul etmiyorum...",
+      "Evet'e basmayı denesek mi? 🥺"
+    ];
+    noBtn.innerText = messages[counter % messages.length];
+    counter++;
+  });
+</script></body>
+</html>
