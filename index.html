@@ -1,211 +1,166 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!DOCTYPE html><html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Berke'den Nisa'ya | Aşkın Dijital Hikayesi</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
-  /* Temel ayarlar */
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #1a0000, #660000);
-    color: #fff;
-    overflow-x: hidden;
-  }
-  .container {
-    max-width: 700px;
-    margin: 60px auto;
-    padding: 30px 40px;
-    background: #1f0000cc;
-    border-radius: 25px;
-    box-shadow: 0 0 30px #ff0033cc;
-    text-align: center;
-    position: relative;
-    animation: fadeInUp 1s ease forwards;
-    min-height: 320px;
-  }
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.5em;
-    color: #ff3366;
-    margin-bottom: 10px;
-    text-shadow: 0 0 8px #ff6699;
-  }
-  p {
-    font-size: 1.3em;
-    line-height: 1.8em;
-    margin: 20px 0 30px;
-    text-shadow: 0 0 5px #ff3355aa;
-  }
-  button {
-    background: linear-gradient(45deg, #ff0044, #ff6699);
-    border: none;
-    padding: 18px 45px;
-    margin: 15px;
-    font-size: 1.2em;
-    font-weight: 700;
-    color: #fff;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #ff3366;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    outline: none;
-  }
-  button::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.5s;
-    transform: rotate(45deg);
-    z-index: 0;
-  }
-  button:hover::before {
-    opacity: 1;
-  }
-  button:hover {
-    box-shadow: 0 0 30px #ff6699;
-    transform: scale(1.1);
-    color: #fff;
-  }
-  button:active {
-    transform: scale(0.95);
-  }
-  .hidden {
-    display: none;
-  }
-  ul {
-    list-style: none;
-    padding-left: 0;
-    font-size: 1.15em;
-    text-align: left;
-    max-width: 400px;
-    margin: 0 auto 30px;
-  }
-  ul li {
-    margin: 8px 0;
-    position: relative;
-    padding-left: 25px;
-    color: #ffccd5;
-    text-shadow: 0 0 5px #ff4466;
-  }
-  ul li::before {
-    content: '❤';
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #ff3366;
-    animation: heartbeat 2s infinite;
-  }
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-  }
-  /* Animasyonlu kalpler arka plan */
-  .hearts {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-  }
-  .heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #ff3355;
-    transform: rotate(-45deg);
-    animation: floatUp linear forwards;
-    opacity: 0.7;
-    filter: drop-shadow(0 0 5px #ff6699);
-  }
-  .heart::before,
-  .heart::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: #ff3355;
-    border-radius: 50%;
-  }
-  .heart::before {
-    top: -10px;
-    left: 0;
-  }
-  .heart::after {
-    top: 0;
-    left: 10px;
-  }
-  @keyframes floatUp {
-    0% {
-      transform: translateY(0) rotate(-45deg);
-      opacity: 0.8;
-    }
-    100% {
-      transform: translateY(-120vh) rotate(-45deg);
-      opacity: 0;
-    }
-  }
-  /* “Hayır” butonuna özel kaçma animasyonu */
-  #noBtn {
-    position: relative;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Berke'den Nisa'ya</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: radial-gradient(ellipse at top, #1a0000, #660000);
+  overflow-x: hidden;
+  color: #fff;
+}
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(255, 182, 193, 0.6);
+  text-align: center;
+  animation: fadeIn 1.5s ease;
+  position: relative;
+  z-index: 1;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: #ffc0cb;
+}
+p {
+  font-size: 1.3em;
+  line-height: 1.8;
+  margin: 20px 0;
+}
+button {
+  padding: 15px 35px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 12px;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #ff4d6d, #ff8a65);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #ff6f91, #ff9472);
+}
+.hidden {
+  display: none;
+}
+ul {
+  list-style-type: heart;
+  padding-left: 0;
+}
+ul li {
+  text-align: left;
+  padding: 5px 0;
+  font-size: 1.1em;
+}
+audio {
+  display: none;
+}
+.stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: transparent;
+  z-index: 0;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  animation: twinkle 2s infinite ease-in-out;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.heart-bar {
+  width: 100%;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.heart-fill {
+  width: 0%;
+  height: 20px;
+  background: linear-gradient(90deg, #ff3366, #ff6699);
+  transition: width 1s ease;
+}
+.lyrics {
+  margin-top: 30px;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #ffb6c1;
+  text-shadow: 0 0 5px #ff6699;
+}
+.countdown {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #ffaaaa;
+}
+.pulse-heart {
+  font-size: 60px;
+  animation: pulse 1.5s infinite;
+  margin: 20px 0;
+}
+@keyframes pulse {
+  0% { transform: scale(1); color: #ff6699; }
+  50% { transform: scale(1.2); color: #ff3366; }
+  100% { transform: scale(1); color: #ff6699; }
+}
+
+  </style>
 </head>
 <body>
-
-<div class="hearts" id="hearts-container"></div>
-
+<div class="stars" id="stars"></div>
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9a61dc21be.mp3?filename=romantic-piano-loop-112191.mp3" type="audio/mp3">
+</audio>
 <div class="container" id="step1">
   <h1>Nisa...</h1>
-  <p>Şu an ellerim klavyede olabilir... Ama kalbim senin ellerinde.<br>
-  Uzak mesafeler sadece yolları ayırır, kalpleri değil...<br><br>
-  Sabredip beni beklediğin için bu ilişki sana armağan olsun, yavrum.</p>
+  <p>Şu an ellerim klavyede olabilir... Ama kalbim senin ellerinde.
+     Uzak mesafeler sadece yolları ayırır, kalpleri değil...</p>
+  <div class="heart-bar"><div class="heart-fill" id="heartFill"></div></div>
+  <div class="pulse-heart">❤️</div>
+  <div class="countdown" id="countdown"></div>
   <button onclick="nextStep(2)">💌 Devam Et</button>
 </div>
-
 <div class="container hidden" id="step2">
   <h1>Yavrum...</h1>
-  <p>Biz şu an farklı şehirlerde olabiliriz. Ama içimde sana uzanan bir yol var.<br>
-  Ve iki yıl sonra, Ankara'da o yolun sonunda seni bekliyorum.<br><br>
-  Sabırla beklediğin her gün, bu aşkı güçlendiriyor.</p>
+  <p>Biz şu an farklı şehirlerde olabiliriz. Ama içimde sana uzanan bir yol var.
+     Ve iki yıl sonra, Ankara'da o yolun sonunda seni bekliyorum.</p>
+  <div class="heart-bar"><div class="heart-fill" id="heartFill2"></div></div>
   <button onclick="nextStep(3)">🌙 Devam Et</button>
 </div>
-
 <div class="container hidden" id="step3">
-  <p>Seni düşündüğüm her an, içimde bir şeyler büyüyor.<br>
-  Her mesajın, her kelimen, kalbime dokunuyor.<br><br>
-  Şimdi sana kalbimle bir şey söylemek istiyorum.</p>
+  <p>Seni düşündüğüm her an, içimde bir şeyler büyüyor.
+     Her mesajın, her kelimen, kalbime dokunuyor.
+     Şimdi sana kalbimle bir şey söylemek istiyorum.</p>
+  <div class="heart-bar"><div class="heart-fill" id="heartFill3"></div></div>
   <button onclick="nextStep(4)">❤️ Devam Et</button>
 </div>
-
 <div class="container hidden" id="step4">
   <h1>Benimle çıkar mısın, yavrum?</h1>
-  <button id="yesBtn">💖 Evet, kalbin bende zaten</button>
+  <button onclick="nextStep(5)">💖 Evet, kalbin bende zaten</button>
   <button id="noBtn">😢 Hayır</button>
 </div>
-
 <div class="container hidden" id="step5">
   <h1>İşte bu cevabı bekliyordum ❤️</h1>
   <p>Seni seviyorum yavrum. Bu kalp artık sonsuza kadar senin.</p>
@@ -215,72 +170,46 @@
     <li>Kocatepe’de gün batımını izlemek</li>
     <li>Kızılay’da gece çayı içmek</li>
     <li>Beraber film izleyip yanında uyuyakalmak</li>
-    <li>“Hatırlıyor musun o sanal teklifi?” demek</li>
+    <li>"Hatırlıyor musun o sanal teklif?" demek</li>
   </ul>
   <h3>🤗 Sanal Sarılma</h3>
-  <p>Gözlerini kapat yavrum... Şu an sana sarılıyorum.<br>Kalbimden geçen sıcaklık ekranına ulaşsın...</p>
+  <p>Gözlerini kapat yavrum... Şu an sana sarılıyorum. Kalbimden geçen sıcaklık ekranına ulaşsın...</p>
   <h3>✉️ Kalbimden Gelen</h3>
-  <p>Bu bir teklif değil sadece. Bu, sana uzanan bir ömürlük yolun ilk adımı...<br>Seni seviyorum, yavrum.</p>
+  <p>Bu sadece bir teklif değil. Bu sana uzanan bir ömürlük yolun ilk adımı... Seni seviyorum, yavrum.</p>
+  <div class="lyrics">
+    🎶 "Ben seni severim, sen beni yorma..." 🎶<br>
+    🎶 "Yüzüme bakmazsın, geçerim yorma..." 🎶
+  </div>
 </div>
-
 <script>
   let currentStep = 1;
-
   function nextStep(step) {
-    document.getElementById('step' + currentStep).classList.add('hidden');
-    document.getElementById('step' + step).classList.remove('hidden');
+    document.getElementById("step" + currentStep).classList.add("hidden");
+    document.getElementById("step" + step).classList.remove("hidden");
     currentStep = step;
-  }
+    if(step === 2) document.getElementById("heartFill").style.width = "33%";
+    if(step === 3) document.getElementById("heartFill2").style.width = "66%";
+    if(step === 4) document.getElementById("heartFill3").style.width = "100%";
+  }const noBtn = document.getElementById("noBtn"); let counter = 0; noBtn.addEventListener("mouseover", () => { const responses = [ "Yavrum, bunu demek istememişsindir...", "Bir daha düşün lütfen...", "Kalbim kırılır...", "Bu cevabı kabul etmiyorum...", "Evet'e basmayı denesek mi? 🥺" ]; noBtn.innerText = responses[counter % responses.length]; counter++; });
 
-  // “Hayır” butonu kaçma davranışı
-  const noBtn = document.getElementById('noBtn');
-  const yesBtn = document.getElementById('yesBtn');
-  let noHoverCount = 0;
+const starsContainer = document.getElementById('stars'); for(let i = 0; i < 100; i++) { const star = document.createElement('div'); star.classList.add('star'); star.style.top = Math.random() * 100 + '%'; star.style.left = Math.random() * 100 + '%'; star.style.animationDuration = (Math.random() * 3 + 2) + 's'; starsContainer.appendChild(star); }
 
-  noBtn.addEventListener('mouseenter', () => {
-    noHoverCount++;
-    const moveDistance = 100 + (noHoverCount * 20);
-    const x = Math.random() * window.innerWidth * 0.8;
-    const y = Math.random() * window.innerHeight * 0.7;
-    noBtn.style.position = 'absolute';
-    noBtn.style.left = x + 'px';
-    noBtn.style.top = y + 'px';
-    if(noHoverCount > 6){
-      noBtn.innerText = "Lütfen… Yavrum, bunu demek istememişsindir 🥺";
-      noBtn.style.left = 'calc(50% + 80px)';
-      noBtn.style.top = '50%';
-      noBtn.style.transform = 'translateY(-50%)';
-    }
-  });
+// Geri sayım - 2 yıl sonrası üniversite açılışından 2 hafta önce (örnek: 2027-08-18) const countdownDate = new Date("2027-08-18T00:00:00").getTime(); const countdownEl = document.getElementById("countdown");
 
-  noBtn.addEventListener('click', () => {
-    alert('Evet butonuna basmanı çok isterim, yavrum ❤️');
-  });
+setInterval(() => { const now = new Date().getTime(); const distance = countdownDate - now;
 
-  yesBtn.addEventListener('click', () => {
-    nextStep(5);
-    // Butonlar yok olsun, ekranı parlatalım
-    yesBtn.style.display = 'none';
-    noBtn.style.display = 'none';
-    // Kalp animasyonu için efektler eklenebilir
-  });
+if (distance > 0) {
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Kalp animasyonları - küçük kalpler yukarı çıkıyor
-  const heartsContainer = document.getElementById('hearts-container');
+  countdownEl.innerHTML = `Sana kavuşmamıza kalan süre: ${days}g ${hours}s ${minutes}d ${seconds}sn`;
+} else {
+  countdownEl.innerHTML = "Artık buradayız, yavrum ❤️";
+}
 
-  function createHeart(){
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
-    heart.style.opacity = Math.random() * 0.5 + 0.5;
-    heartsContainer.appendChild(heart);
-    setTimeout(() => {
-      heart.remove();
-    }, 6000);
-  }
-  setInterval(createHeart, 500);
-</script>
+}, 1000); </script>
 
 </body>
 </html>
