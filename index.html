@@ -1,258 +1,243 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Berke'den Nisa'ya</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yavrum, Benimle Çıkar Mısın?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background: radial-gradient(ellipse at top, #1a0000, #660000);
-      overflow-x: hidden;
-      color: #fff;
-    }
+  * {
+    box-sizing: border-box;
+  }
+
+  body, html {
+    margin: 0; padding: 0;
+    height: 100%;
+    background: #cc0000;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .container {
+    background: rgba(0,0,0,0.6);
+    padding: 30px 20px;
+    border-radius: 30px;
+    max-width: 90vw;
+    width: 400px;
+    box-shadow: 0 0 40px #ff4d6d;
+    position: relative;
+  }
+
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 12px #ff6699;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    min-height: 120px;
+  }
+
+  #timer {
+    font-family: monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #ffb6c1;
+    text-shadow: 0 0 10px #ff3366;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    height: 50px;
+  }
+
+  button {
+    background: linear-gradient(45deg, #ff4d6d, #ff8a65);
+    border: none;
+    border-radius: 50px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+    position: relative;
+    user-select: none;
+  }
+
+  button:hover {
+    background: linear-gradient(45deg, #ff6f91, #ff9472);
+    transform: scale(1.05);
+  }
+
+  #noBtn {
+    position: absolute;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
     .container {
-      max-width: 800px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 25px;
-      box-shadow: 0 0 30px rgba(255, 182, 193, 0.6);
-      text-align: center;
-      animation: fadeIn 1.5s ease;
-      position: relative;
-      z-index: 1;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      width: 95vw;
+      padding: 25px 15px;
     }
     h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3em;
-      margin-bottom: 10px;
-      color: #ffc0cb;
+      font-size: 2.2rem;
     }
     p {
-      font-size: 1.3em;
-      line-height: 1.8;
-      margin: 20px 0;
-      max-width: 700px;
-      user-select: none;
+      font-size: 1rem;
+      min-height: auto;
+      margin-bottom: 30px;
     }
     button {
-      padding: 15px 35px;
-      font-size: 1.2em;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      margin: 12px;
-      transition: all 0.3s ease;
-      background: linear-gradient(45deg, #ff4d6d, #ff8a65);
-      color: white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      user-select: none;
+      padding: 12px 30px;
+      font-size: 1rem;
     }
-    button:hover {
-      transform: scale(1.05);
-      background: linear-gradient(45deg, #ff6f91, #ff9472);
-    }
-    .hidden {
-      display: none;
-    }
-    ul {
-      list-style-type: heart;
-      padding-left: 0;
-      max-width: 700px;
-      text-align: left;
-    }
-    ul li {
-      padding: 5px 0;
-      font-size: 1.1em;
-    }
-    audio {
-      display: none;
-    }
-    .stars {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: transparent;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      animation: twinkle 2s infinite ease-in-out;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
-    .heart-bar {
-      width: 100%;
-      background: #333;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 20px;
-      max-width: 700px;
-      height: 20px;
-    }
-    .heart-fill {
-      width: 0%;
-      height: 20px;
-      background: linear-gradient(90deg, #ff3366, #ff6699);
-      transition: width 1s ease;
-    }
-    .lyrics {
-      margin-top: 30px;
-      font-size: 1.1em;
-      font-style: italic;
-      color: #ffb6c1;
-      text-shadow: 0 0 5px #ff6699;
-      max-width: 700px;
-    }
-    .countdown {
-      margin-top: 20px;
-      font-size: 1.2em;
-      color: #ffaaaa;
-    }
-    .pulse-heart {
-      font-size: 60px;
-      animation: pulse 1.5s infinite;
-      margin: 20px 0;
-      user-select: none;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); color: #ff6699; }
-      50% { transform: scale(1.2); color: #ff3366; }
-      100% { transform: scale(1); color: #ff6699; }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <div class="stars" id="stars"></div>
 
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9a61dc21be.mp3?filename=romantic-piano-loop-112191.mp3" type="audio/mp3" />
-  </audio>
+<div class="container" id="offerContainer">
+  <h1>Yavrum, Benimle Çıkar Mısın?</h1>
+  <p id="offerMsg">
+    İki yıl boyunca uzak kaldık, ama kalplerimiz hiç ayrılmadı.<br>
+    Şimdi zaman, bizim hikayemizin en güzel sayfasını açmak için hazır.<br>
+    Seninle Ankara’da el ele, birlikte olacağımız o gün için sabırsızlanıyorum.<br><br>
+    Bu yolculukta her saniye seni düşündüm, her an kalbim seninle attı.<br>
+    Şimdi, tek bir kelimeyle başla bu yeni hikayeye...
+  </p>
 
-  <div class="container" id="step1">
-    <h1>Nisa...</h1>
-    <p>Şu an ellerim klavyede olabilir... Ama kalbim senin ellerinde. Seni düşündükçe, parmaklarımın yazdığı her kelime aslında kalbimin sesi oluyor. Her harf, sana uzanan bir sevgi köprüsünün taşları gibi… Gözlerimi kapadığımda, hayalimde hep sen varsın. Senin gülüşünle aydınlanan bir dünya, senin adını her atışında fısıldayan bir kalp... Uzak mesafeler sadece yolları ayırır, kalpleri değil. Ve bu satırları okurken hissettiğin şey, işte o bizim gerçekliğimiz. Kalbim seninle her zaman, her yerde...</p>
-    <div class="heart-bar"><div class="heart-fill" id="heartFill"></div></div>
-    <div class="pulse-heart">❤️</div>
-    <div class="countdown" id="countdown"></div>
-    <button onclick="nextStep(2)">💌 Devam Et</button>
-  </div>
+  <div id="timer">00 yıl 00 ay 00 gün 00:00:00</div>
 
-  <div class="container hidden" id="step2">
-    <h1>Yavrum...</h1>
-    <p>Biz şu an farklı şehirlerde olabiliriz. Ama içimde sana uzanan bir yol var. Her sabah kalktığımda o yolun başında uyanıyorum. Gün boyunca seni düşünerek ilerliyorum. Ve her gece, hayalimde o yolun sonunda sana sarılarak uyuyorum. İki yıl sonra, Ankara'da buluşacağımız o günde; göz göze geldiğimizde her şeyin anlam bulacağına inanıyorum. Bu uzaklık, bizi daha güçlü, daha sabırlı yaptı. Ve biliyorum ki, seninle geçireceğimiz her an, bu bekleyişin en güzel ödülü olacak. Seni beklemek, ömre bedel bir sabır. Çünkü beklediğim sensin.</p>
-    <div class="heart-bar"><div class="heart-fill" id="heartFill2"></div></div>
-    <button onclick="nextStep(3)">🌙 Devam Et</button>
-  </div>
-
-  <div class="container hidden" id="step3">
-    <p>Seni düşündüğüm her an, içimde bir şeyler büyüyor. Tarif edemediğim bir sıcaklık, bir güven, bir huzur… Seninle konuşmak, sana yazmak, seni beklemek… bunların hepsi bir bütün oldu içimde. Ne zaman sesini duysam, kalbim melodini ezberliyor. Her mesajın bir şiir gibi geliyor. Ve ben bu kelimelerle, o duyguyu yakalamaya çalışıyorum. Sana kalbimle bir şey söylemek istiyorum: Bu aşk sadece bir duygu değil. Bu, bir yolculuk. Ve bu yolculukta tek yol arkadaşım sensin. Adını andığım her an, dudaklarıma bir tebessüm yerleşiyor. Bu satırlar, sana olan sevgimin sadece küçük bir yansıması...</p>
-    <div class="heart-bar"><div class="heart-fill" id="heartFill3"></div></div>
-    <button onclick="nextStep(4)">❤️ Devam Et</button>
-  </div>
-
-  <div class="container hidden" id="step4">
-    <h1>Benimle çıkar mısın, yavrum?</h1>
-    <button onclick="nextStep(5)">💖 Evet, kalbin bende zaten</button>
+  <div class="btns">
+    <button id="yesBtn">💖 Evet, kalbim sende</button>
     <button id="noBtn">😢 Hayır</button>
   </div>
+</div>
 
-  <div class="container hidden" id="step5">
-    <h1>İşte bu cevabı bekliyordum ❤️</h1>
-    <p>Seni seviyorum yavrum. Bu kalp artık sonsuza kadar senin.</p>
-    <h2>💞 Ankara Hayalimiz</h2>
-    <ul>
-      <li>El ele Tunalı'da yürümek</li>
-      <li>Kocatepe’de gün batımını izlemek</li>
-      <li>Kızılay’da gece çayı içmek</li>
-      <li>Beraber film izleyip yanında uyuyakalmak</li>
-      <li>"Hatırlıyor musun o sanal teklif?" demek</li>
-    </ul>
-    <h3>🤗 Sanal Sarılma</h3>
-    <p>Gözlerini kapat yavrum... Şu an sana sarılıyorum. Kalbimden geçen sıcaklık ekranına ulaşsın...</p>
-    <h3>✉️ Kalbimden Gelen</h3>
-    <p>Bu sadece bir teklif değil. Bu sana uzanan bir ömürlük yolun ilk adımı... Seni seviyorum, yavrum.</p>
-    <div class="lyrics">
-      🎶 "Ben seni severim, sen beni yorma..." 🎶<br />
-      🎶 "Yüzüme bakmazsın, geçerim yorma..." 🎶
-    </div>
-  </div>
+<div class="container hidden" id="thankYouContainer" style="display:none;">
+  <h1>Teşekkürler, Yavrum! ❤️</h1>
+  <p>Sevgili olduğumuzdan beri geçen süre:</p>
+  <div id="loveTimer" style="font-family: monospace; font-size: 1.6rem; font-weight: 700; color: #ffb6c1; text-shadow: 0 0 10px #ff3366;"></div>
+</div>
 
-  <script>
-    let currentStep = 1;
-    function nextStep(step) {
-      document.getElementById("step" + currentStep).classList.add("hidden");
-      document.getElementById("step" + step).classList.remove("hidden");
-      currentStep = step;
+<script>
+  const offerContainer = document.getElementById('offerContainer');
+  const thankYouContainer = document.getElementById('thankYouContainer');
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const timer = document.getElementById('timer');
+  const loveTimer = document.getElementById('loveTimer');
 
-      if(step === 2) document.getElementById("heartFill").style.width = "33%";
-      if(step === 3) document.getElementById("heartFill2").style.width = "66%";
-      if(step === 4) document.getElementById("heartFill3").style.width = "100%";
+  // Sayaç başlangıç tarihi: 27 Temmuz 2023 00:00:00 (UTC)
+  const startDate = new Date("2023-07-27T00:00:00Z").getTime();
+
+  // Genel geçen süre sayaçı (teklif öncesi)
+  function updateTimer() {
+    const now = Date.now();
+    let diff = now - startDate;
+
+    if (diff < 0) {
+      timer.innerText = "Henüz başlamadı...";
+      return;
     }
 
-    const noBtn = document.getElementById("noBtn");
-    let counter = 0;
-    noBtn.addEventListener("mouseover", () => {
-      const responses = [
-        "Yavrum, bunu demek istememişsindir...",
-        "Bir daha düşün lütfen...",
-        "Kalbim kırılır...",
-        "Bu cevabı kabul etmiyorum...",
-        "Evet'e basmayı denesek mi? 🥺"
-      ];
-      noBtn.innerText = responses[counter % responses.length];
-      counter++;
-    });
+    const ms = diff % 1000;
+    diff = Math.floor(diff / 1000);
+    const seconds = diff % 60;
+    diff = Math.floor(diff / 60);
+    const minutes = diff % 60;
+    diff = Math.floor(diff / 60);
+    const hours = diff % 24;
+    diff = Math.floor(diff / 24);
+    const days = diff % 30;
+    diff = Math.floor(diff / 30);
+    const months = diff % 12;
+    const years = Math.floor(diff / 12);
 
-    const starsContainer = document.getElementById('stars');
-    for(let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      starsContainer.appendChild(star);
+    function pad(n) {
+      return n.toString().padStart(2, '0');
     }
 
-    // Geri sayım - 2 yıl sonrası üniversite açılışından 2 hafta önce (örnek: 2027-08-18)
-    const countdownDate = new Date("2027-08-18T00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
+    timer.innerText = `${pad(years)} yıl ${pad(months)} ay ${pad(days)} gün ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  }
 
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
+  setInterval(updateTimer, 500);
+  updateTimer();
 
-      if (distance > 0) {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // Hayır butonu kaçma davranışı
+  noBtn.addEventListener('mouseenter', () => {
+    const containerRect = offerContainer.getBoundingClientRect();
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
 
-        countdownEl.innerHTML = `Sana kavuşmamıza kalan süre: ${days}g ${hours}s ${minutes}d ${seconds}sn`;
-      } else {
-        countdownEl.innerHTML = "Artık buradayız, yavrum ❤️";
+    // Yeni rastgele pozisyon (container içinde)
+    const maxX = containerRect.width - btnWidth;
+    const maxY = containerRect.height - btnHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
+  });
+
+  // Evet butonuna basınca teşekkür ve sevgili süresi göster
+  yesBtn.addEventListener('click', () => {
+    offerContainer.style.display = 'none';
+    thankYouContainer.style.display = 'block';
+
+    function updateLoveTimer() {
+      const now = Date.now();
+      let diff = now - startDate;
+
+      if (diff < 0) {
+        loveTimer.innerText = "Henüz başlamadı...";
+        return;
       }
-    }, 1000);
-  </script>
+
+      const ms = diff % 1000;
+      diff = Math.floor(diff / 1000);
+      const seconds = diff % 60;
+      diff = Math.floor(diff / 60);
+      const minutes = diff % 60;
+      diff = Math.floor(diff / 60);
+      const hours = diff % 24;
+      diff = Math.floor(diff / 24);
+      const days = diff % 30;
+      diff = Math.floor(diff / 30);
+      const months = diff % 12;
+      const years = Math.floor(diff / 12);
+
+      function pad(n) {
+        return n.toString().padStart(2, '0');
+      }
+
+      loveTimer.innerText = `${pad(years)} yıl ${pad(months)} ay ${pad(days)} gün ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+    }
+
+    setInterval(updateLoveTimer, 500);
+    updateLoveTimer();
+  });
+</script>
+
 </body>
 </html>
